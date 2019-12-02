@@ -28,7 +28,7 @@ func (m *Matrix) FromArray(array []float64) {
 	}
 }
 
-// NewFromArray hmm
+// NewFromArray is a function to create a matrix from slice(array)
 func NewFromArray(array []float64) Matrix {
 	nMatrix := NewMatrix(len(array), 1)
 	for i, v := range array {

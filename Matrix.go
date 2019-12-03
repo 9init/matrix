@@ -28,7 +28,7 @@ func (m *Matrix) FromArray(array []float64) {
 	}
 }
 
-// NewFromArray is a function to create a matrix from slice(array)
+// NewFromArray hmm
 func NewFromArray(array []float64) Matrix {
 	nMatrix := NewMatrix(len(array), 1)
 	for i, v := range array {
@@ -133,15 +133,16 @@ func (m *Matrix) DotProduct(sMatrix Matrix) (Matrix, error) {
 		return *m, err
 	}
 
+	nMatrix := NewMatrix(m.col, sMatrix.row)
 	for i := 0; i < m.col; i++ {
 		for j := 0; j < sMatrix.row; j++ {
 			for k := 0; k < sMatrix.col; k++ {
-				m.Matrix[i][j] += m.Matrix[i][k] * sMatrix.Matrix[k][j]
+				nMatrix.Matrix[i][j] += m.Matrix[i][k] * sMatrix.Matrix[k][j]
 			}
 		}
 	}
 
-	m.row = sMatrix.row
+	*m = nMatrix
 	return *m, nil
 }
 
